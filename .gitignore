@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+#cmake
+*.cmake
+CMakeFiles
+CMakeCache.txt
+Makefile
+
+#build
+grille-crypt
