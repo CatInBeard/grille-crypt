@@ -18,7 +18,7 @@
 
 
 GrilleKey::GrilleKey(std::string str){
-	size = static_cast<unsigned int>(str.length());
+	listSize = 0;
 	for(auto c: str){
 		bool isHole;
 
@@ -29,12 +29,14 @@ GrilleKey::GrilleKey(std::string str){
 			isHole = true;
 		}
 
+		listSize++;
+
 		keyDataList.push_back(isHole);
 	}
 }
 
-unsigned int GrilleKey::getSize(){
-	return size;
+unsigned int GrilleKey::size() const{
+	return listSize;
 }
 
 key_iterator GrilleKey::begin(){

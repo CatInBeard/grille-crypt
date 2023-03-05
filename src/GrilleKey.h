@@ -22,11 +22,11 @@ using key_iterator = std::list<bool>::iterator;
 class GrilleKey{
 	public:
 		GrilleKey(std::string);
-		unsigned int getSize();
+		unsigned int size() const;
 		key_iterator begin();
 		key_iterator end();
 	private:
-		unsigned int size;
+		unsigned int listSize;
 		std::list<bool> keyDataList; 
 };
 
