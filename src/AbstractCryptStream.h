@@ -23,10 +23,10 @@
 
 class AbstractCryptStream{
 	public:
-	AbstractCryptStream(GrilleKey){};
-	virtual void put(std::istream&);
-	virtual void get(std::ostream&);
-	virtual ~AbstractCryptStream();
+		AbstractCryptStream(){};	
+		virtual void put(std::istream&)=0;
+		virtual void get(std::ostream&)=0;
+		virtual ~AbstractCryptStream(){};
 };
 
 std::ostream& operator<<(std::ostream&, AbstractCryptStream&);
