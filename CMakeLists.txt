@@ -26,6 +26,6 @@ add_compile_options(
     -Wsign-promo
 )
 
-add_executable(grille-crypt src/main.cpp src/GrilleKey.h src/GrilleKey.cpp)
+add_executable(grille-crypt src/main.cpp src/GrilleKey.h src/GrilleKey.cpp src/AbstractCryptStream.h src/AbstractCryptStream.cpp)
 
 target_link_libraries(grille-crypt)
