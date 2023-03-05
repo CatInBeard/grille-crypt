@@ -10,8 +10,8 @@
  *
  */
 
-#include<string>
-#include<vector>
+#include <string>
+#include <list>
 
 #include "GrilleKey.h"
 
@@ -20,20 +20,27 @@
 GrilleKey::GrilleKey(std::string str){
 	size = static_cast<unsigned int>(str.length());
 	for(auto c: str){
+		bool isHole;
+
 		if(c<'h'){
-			keyMatrix.push_back(false);
+			isHole = false;
 		}
 		else{
-			keyMatrix.push_back(true);
+			isHole = true;
 		}
-	}
-}
 
-std::vector<bool> GrilleKey::getMatrix(){
-	return keyMatrix;
+		keyDataList.push_back(isHole);
+	}
 }
 
 unsigned int GrilleKey::getSize(){
 	return size;
 }
 
+key_iterator GrilleKey::begin(){
+	return keyDataList.begin();
+}
+
+key_iterator GrilleKey::end(){
+	return keyDataList.end();
+}

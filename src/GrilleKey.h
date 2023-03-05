@@ -14,17 +14,20 @@
 
 #define GRILLE_KEY_H
 
-#include<string>
-#include<vector> 
+#include <string>
+#include <list> 
+
+using key_iterator = std::list<bool>::iterator;
 
 class GrilleKey{
 	public:
-	GrilleKey(std::string);
-	std::vector<bool> getMatrix();
-	unsigned int getSize();
+		GrilleKey(std::string);
+		unsigned int getSize();
+		key_iterator begin();
+		key_iterator end();
 	private:
 		unsigned int size;
-		std::vector<bool> keyMatrix; 
+		std::list<bool> keyDataList; 
 };
 
 #endif
