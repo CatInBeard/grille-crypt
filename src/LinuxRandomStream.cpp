@@ -1,4 +1,9 @@
-/*                                                                                                        * Copyright 2023 Grigoriy Efimov                                                                         *                                                                                                        * Author: Grigoriy Efimov <efimov-gm@newpage.xyz>                                                        *                                                                                                        * This file is part of grille-crypt.
+/*
+ * Copyright 2023 Grigoriy Efimov
+ *
+ * Author: Grigoriy Efimov <efimov-gm@newpage.xyz>
+ * 
+ * This file is part of grille-crypt.
  *
  * Grille-crypt is free software: you can redistribute it and/or modify it under the terms of the
  * GNU General Public License as published by the Free Software Foundation, either version 3 of
