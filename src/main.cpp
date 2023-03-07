@@ -20,10 +20,20 @@
 
 
 #include <iostream>
+#include <sstream>
 
 #include "GrilleKey.h"
+#include "EncryptStream.h"
 
 int main(){
-	GrilleKey key{"abcdef"};
+	std::istringstream iss {"1234567890"};
+	std::istream& is = static_cast<std::istream&>(iss);
+
+	GrilleKey key{"az"};
+	EncryptStream es {key};
+	while(is){
+		is >> es;
+		std::cout << es;
+	}
 	return 0;
 }
