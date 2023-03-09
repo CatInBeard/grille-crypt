@@ -23,7 +23,7 @@
 
 #include "GrilleKey.h"
 
-
+namespace grille{
 
 GrilleKey::GrilleKey(std::string str){
 	listSize = 0;
@@ -53,4 +53,6 @@ key_iterator GrilleKey::begin(){
 
 key_iterator GrilleKey::end(){
 	return keyDataList.end();
+}
+
 }

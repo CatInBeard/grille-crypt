@@ -23,10 +23,13 @@
 
 #include <iostream>
 
+namespace grille{
+
 class AbstractRandomStream{
 	public:
 		virtual char getChar()=0;
 		virtual ~AbstractRandomStream(){};
 };
 
+}
 #endif

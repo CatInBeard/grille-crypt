@@ -24,6 +24,8 @@
 #include <iostream>
 #include <fstream>
 
+namespace grille{
+
 LinuxRandomStream::LinuxRandomStream(): 
 	ifs {"/dev/urandom", std::ios_base::binary}{}
 
@@ -33,3 +35,4 @@ char LinuxRandomStream::getChar(){
 	return c;
 }
 
+}

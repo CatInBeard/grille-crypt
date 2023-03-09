@@ -20,6 +20,8 @@
 #include "AbstractCryptStream.h"
 #include <iostream>
 
+namespace grille{
+
 std::ostream& operator<<(std::ostream& os, AbstractCryptStream& cs){
 	cs.get(os);
 	return os;
@@ -28,4 +30,6 @@ std::ostream& operator<<(std::ostream& os, AbstractCryptStream& cs){
 std::istream& operator>>(std::istream& is, AbstractCryptStream& cs){
 	cs.put(is);
 	return is;
+}
+
 }

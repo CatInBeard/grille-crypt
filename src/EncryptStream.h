@@ -31,6 +31,8 @@
 #include <iostream>
 #include <memory>
 
+namespace grille{
+
 class EncryptStream: public AbstractCryptStream{
 	public:
 		EncryptStream(GrilleKey);
@@ -45,4 +47,5 @@ class EncryptStream: public AbstractCryptStream{
 		std::unique_ptr<AbstractRandomStream> rs;
 };
 
+}
 #endif

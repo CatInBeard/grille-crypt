@@ -25,12 +25,13 @@
 #include "GrilleKey.h"
 #include "EncryptStream.h"
 
+
 int main(){
 	std::istringstream iss {"1234567890"};
 	std::istream& is = static_cast<std::istream&>(iss);
 
-	GrilleKey key{"az"};
-	EncryptStream es {key};
+	grille::GrilleKey key{"az"};
+	grille::EncryptStream es {key};
 	while(is){
 		is >> es;
 		std::cout << es;

@@ -25,6 +25,8 @@
 #include "GrilleKey.h"
 #include <iostream>
 
+namespace grille{
+
 class AbstractCryptStream{
 	public:
 		AbstractCryptStream(){};	
@@ -36,4 +38,5 @@ class AbstractCryptStream{
 std::ostream& operator<<(std::ostream&, AbstractCryptStream&);
 std::istream& operator>>(std::istream&, AbstractCryptStream&);
 
+}
 #endif

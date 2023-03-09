@@ -17,6 +17,8 @@
 #include <string>
 #include <list> 
 
+namespace grille{
+
 using key_iterator = std::list<bool>::iterator;
 
 class GrilleKey{
@@ -30,4 +32,5 @@ class GrilleKey{
 		std::list<bool> keyDataList; 
 };
 
+}
 #endif

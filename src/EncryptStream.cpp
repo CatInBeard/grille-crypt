@@ -21,6 +21,8 @@
 #include "EncryptStream.h"
 #include "GrilleKey.h"
 
+namespace grille{
+
 EncryptStream::EncryptStream(GrilleKey key):
 	dataFrame{new char[key.size()]},
 	rs{new LinuxRandomStream()} {
@@ -53,4 +55,6 @@ void EncryptStream::get(std::ostream& os){
 	for(unsigned long i =0; i != dataFrameSize; i++){
 		os << dataFrame[i];
 	}
+}
+
 }

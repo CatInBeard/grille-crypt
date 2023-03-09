@@ -26,6 +26,8 @@
 #include <iostream>
 #include <fstream>
 
+namespace grille{
+
 class LinuxRandomStream : public AbstractRandomStream{
 	public:
 		LinuxRandomStream();
@@ -35,4 +37,5 @@ class LinuxRandomStream : public AbstractRandomStream{
 		std::ifstream ifs;
 };
 
+}
 #endif
