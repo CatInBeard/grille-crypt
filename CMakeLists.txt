@@ -26,6 +26,13 @@ add_compile_options(
     -Wsign-promo
 )
 
-add_executable(grille-crypt src/main.cpp src/GrilleKey.h src/GrilleKey.cpp src/AbstractCryptStream.h src/AbstractCryptStream.cpp src/EncryptStream.h src/EncryptStream.cpp src/AbstractRandomStream.h src/LinuxRandomStream.h src/LinuxRandomStream.cpp)
+if(UNIX)
+	set(SystemDepended src/LinuxRandomStream.cpp src/LinuxFactory.h src/LinuxFactory.cpp src/LinuxFactoryBuilder.cpp)
+	message(STATUS "build for unix")
+else()
+         message(STATUS "build not for unix")                                      
+endif()
 
-target_link_libraries(grille-crypt)
+add_executable(${PROJECT_NAME} src/main.cpp src/GrilleKey.h src/GrilleKey.cpp src/AbstractCryptStream.h src/AbstractCryptStream.cpp src/EncryptStream.h src/EncryptStream.cpp src/AbstractRandomStream.h src/LinuxRandomStream.h src/AbstractSystemDependedFactory.h src/AbstractSystemDependedFactory.cpp ${SystemDepended})
+	
+target_link_libraries(${PROJECT_NAME})

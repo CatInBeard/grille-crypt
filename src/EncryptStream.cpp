@@ -25,7 +25,7 @@ namespace grille{
 
 EncryptStream::EncryptStream(GrilleKey key):
 	dataFrame{new char[key.size()]},
-	rs{new LinuxRandomStream()} {
+	rs{abstractFactory::AF::getInstance()->getRandomStream()}{
 	unsigned long i = 0;
 	for(auto isHole: key){
 		char* c = &dataFrame[i++];
