@@ -24,17 +24,37 @@
 
 #include "GrilleKey.h"
 #include "EncryptStream.h"
-
+#include "DecryptStream.h"
 
 int main(){
-	std::istringstream iss {"1234567890"};
+	std::string plainData {"1234567890"};
+
+	std::cout<<"original: " <<plainData << std::endl;
+
+	std::istringstream iss {plainData};
 	std::istream& is = static_cast<std::istream&>(iss);
+	std::stringstream oss{};
+	std::ostream& os = static_cast<std::ostream&>(oss);
 
 	grille::GrilleKey key{"az"};
 	grille::EncryptStream es {key};
 	while(is){
 		is >> es;
-		std::cout << es;
+		os << es;
 	}
+	
+	std::string encoded = oss.str();
+	std::cout<<"encoded: " <<encoded << std::endl;
+	
+	std::istringstream iss2 {encoded};
+	std::istream& is2 = static_cast<std::istream&>(iss2);
+
+	grille::DecryptStream ds{key};
+	std::cout<<"decoded: ";
+	while(is2){
+		is2 >> ds;
+		std::cout << ds;
+	}
+
 	return 0;
 }
