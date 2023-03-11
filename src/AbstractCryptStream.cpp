@@ -23,12 +23,12 @@
 namespace grille{
 
 std::ostream& operator<<(std::ostream& os, AbstractCryptStream& cs){
-	cs.get(os);
+	cs.get(os << std::noskipws);
 	return os;
 }
 
 std::istream& operator>>(std::istream& is, AbstractCryptStream& cs){
-	cs.put(is);
+	cs.put(is >> std::noskipws);
 	return is;
 }
 

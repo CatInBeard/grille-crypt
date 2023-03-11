@@ -45,15 +45,21 @@ EncryptStream::~EncryptStream(){
 
 void EncryptStream::put(std::istream& is){
 	for(char* c: realDataPtrList){
-		is >> *c;
+		stopElement = c;
+		if(is.peek() == EOF) break;
+		is >> std::noskipws >> *c;
+		if(*c==10 && is.peek() == EOF) break;
 	}
+	stopElement++;
+
 	for(char* c: noiseDataPtrList){
 		 *c = rs->getChar();
 	}
 }
 void EncryptStream::get(std::ostream& os){
 	for(unsigned long i =0; i != dataFrameSize; i++){
-		os << dataFrame[i];
+		if(&dataFrame[i] == stopElement) return;
+		os << std::noskipws << dataFrame[i];
 	}
 }
 

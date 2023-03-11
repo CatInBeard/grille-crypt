@@ -40,6 +40,7 @@ class EncryptStream: public AbstractCryptStream{
 		virtual void put(std::istream&);
 		virtual void get(std::ostream&);
 	private:
+		char* stopElement{};
 		std::unique_ptr<char[]> dataFrame;
 		std::list<char*> realDataPtrList;
 		std::list<char*> noiseDataPtrList;

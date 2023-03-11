@@ -45,19 +45,23 @@ DecryptStream::~DecryptStream(){
 void DecryptStream::put(std::istream& is){
 	stopElement = nullptr;
 	for(unsigned long i =0; i != dataFrameSize; i++){
-		if(!is){
+		if(is.peek() == EOF){
 			stopElement = &dataFrame[i];
-			stopElement++;
-			return;
+			break;
 		};
 		is >> dataFrame[i];
+		if(dataFrame[i] == 10 && is.peek() == EOF){
+			stopElement = &dataFrame[i];
+			break;
+		}
 	}
 }
 void DecryptStream::get(std::ostream& os){
 	for(char* c: realDataPtrList){
-		if(c == stopElement) return;
+		if(c <= stopElement) return;
         	os << *c;
          }
+	stopElement = realDataPtrList.front();
 }
 
 }
