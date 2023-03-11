@@ -50,9 +50,14 @@ void EncryptStream::put(std::istream& is){
 	}
 	for(char* c: realDataPtrList){
 		stopElement = c;
-		if(is.peek() == EOF) break;
+		if(is.peek() == EOF){
+			return;
+		}
 		is >> std::noskipws >> *c;
-		if(*c==10 && is.peek() == EOF) break;
+		if(*c==10 && is.peek() == EOF){
+			stopElement++;
+			return;
+		}
 	}
 	stopElement = nullptr;
 
