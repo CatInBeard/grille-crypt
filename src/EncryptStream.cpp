@@ -44,17 +44,18 @@ EncryptStream::~EncryptStream(){
 }	
 
 void EncryptStream::put(std::istream& is){
+
+	for(char* c: noiseDataPtrList){
+		 *c = rs->getChar();
+	}
 	for(char* c: realDataPtrList){
 		stopElement = c;
 		if(is.peek() == EOF) break;
 		is >> std::noskipws >> *c;
 		if(*c==10 && is.peek() == EOF) break;
 	}
-	stopElement++;
+	stopElement = nullptr;
 
-	for(char* c: noiseDataPtrList){
-		 *c = rs->getChar();
-	}
 }
 void EncryptStream::get(std::ostream& os){
 	for(unsigned long i =0; i != dataFrameSize; i++){
