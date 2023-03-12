@@ -23,7 +23,7 @@ using key_iterator = std::list<bool>::iterator;
 
 class GrilleKey{
 	public:
-		GrilleKey(std::string);
+		GrilleKey(std::list<char>);
 		unsigned int size() const;
 		key_iterator begin();
 		key_iterator end();

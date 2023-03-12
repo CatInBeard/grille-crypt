@@ -25,21 +25,15 @@
 
 namespace grille{
 
-GrilleKey::GrilleKey(std::string str){
+GrilleKey::GrilleKey(std::list<char> password){
 	listSize = 0;
-	for(auto c: str){
-		bool isHole;
-
-		if(c<'h'){
-			isHole = false;
+	for(unsigned char c: password){
+		while(c>0){
+			bool isHole = c%2;
+			c/=2;
+			listSize++;
+			keyDataList.push_back(isHole);
 		}
-		else{
-			isHole = true;
-		}
-
-		listSize++;
-
-		keyDataList.push_back(isHole);
 	}
 }
 
