@@ -23,7 +23,7 @@
 
 namespace grille{
 
-DecryptStream::DecryptStream(GrilleKey key):
+DecryptStream::DecryptStream(const GrilleKey& key):
 	dataFrame{new char[key.size()]}{
 	unsigned long i = 0;
 	for(auto isHole: key){

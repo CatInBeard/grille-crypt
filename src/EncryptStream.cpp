@@ -23,7 +23,7 @@
 
 namespace grille{
 
-EncryptStream::EncryptStream(GrilleKey key):
+EncryptStream::EncryptStream(const GrilleKey& key):
 	dataFrame{new char[key.size()]},
 	rs{abstractFactory::AF::getInstance()->getRandomStream()}{
 	unsigned long i = 0;

@@ -25,11 +25,11 @@
 
 namespace grille{
 
-GrilleKey::GrilleKey(std::list<char> password){
+GrilleKey::GrilleKey(const std::list<char>& password){
 	listSize = 0;
 	for(unsigned char c: password){
 		while(c>0){
-			bool isHole = c%2;
+			bool isHole = c % 2;
 			c/=2;
 			listSize++;
 			keyDataList.push_back(isHole);
@@ -41,11 +41,11 @@ unsigned int GrilleKey::size() const{
 	return listSize;
 }
 
-key_iterator GrilleKey::begin(){
+key_iterator GrilleKey::begin() const{
 	return keyDataList.begin();
 }
 
-key_iterator GrilleKey::end(){
+key_iterator GrilleKey::end() const{
 	return keyDataList.end();
 }
 

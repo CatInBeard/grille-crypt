@@ -33,7 +33,7 @@ namespace grille{
 
 class DecryptStream: public AbstractCryptStream{
 	public:
-		DecryptStream(GrilleKey);
+		DecryptStream(const GrilleKey&);
 		virtual ~DecryptStream();
 		virtual void put(std::istream&);
 		virtual void get(std::ostream&);

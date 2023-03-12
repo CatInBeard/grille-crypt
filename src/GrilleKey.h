@@ -19,14 +19,15 @@
 
 namespace grille{
 
-using key_iterator = std::list<bool>::iterator;
+using key_iterator = std::list<bool>::const_iterator;
 
 class GrilleKey{
 	public:
-		GrilleKey(std::list<char>);
+		GrilleKey(const std::list<char>&);
 		unsigned int size() const;
-		key_iterator begin();
-		key_iterator end();
+		key_iterator begin() const;
+		key_iterator end() const;
+
 	private:
 		unsigned int listSize;
 		std::list<bool> keyDataList; 

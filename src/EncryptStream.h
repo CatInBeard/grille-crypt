@@ -35,7 +35,7 @@ namespace grille{
 
 class EncryptStream: public AbstractCryptStream{
 	public:
-		EncryptStream(GrilleKey);
+		EncryptStream(const GrilleKey&);
 		virtual ~EncryptStream();
 		virtual void put(std::istream&);
 		virtual void get(std::ostream&);
