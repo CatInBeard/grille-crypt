@@ -21,40 +21,46 @@
 
 #include <iostream>
 #include <sstream>
+#include <fstream>
 
 #include "GrilleKey.h"
 #include "EncryptStream.h"
 #include "DecryptStream.h"
 
 int main(){
-	std::string plainData {"1234567890"};
 
-	std::cout<<"original: " <<plainData << std::endl;
+	std::ifstream ifs {"test", std::ios_base::binary};
+	std::istream& is = static_cast<std::istream&>(ifs);
+	std::ofstream ofs {"test2"};
+	std::ostream& os = static_cast<std::ostream&>(ofs);
 
-	std::istringstream iss {plainData};
-	std::istream& is = static_cast<std::istream&>(iss);
-	std::stringstream oss{};
-	std::ostream& os = static_cast<std::ostream&>(oss);
+	std::string keyString;
 
-	grille::GrilleKey key{"az"};
+	std::list<char> password{'a','b','c'};
+
+	grille::GrilleKey key{password};
 	grille::EncryptStream es {key};
-	while(is){
-		is >> es;
-		os << es;
-	}
+	while(is.good()){
+		is >>std::noskipws >> es;
+		os << std::noskipws<< es;
+	}	
 	
-	std::string encoded = oss.str();
-	std::cout<<"encoded: " <<encoded << std::endl;
+	ifs.close();
+	ofs.close();
 	
-	std::istringstream iss2 {encoded};
-	std::istream& is2 = static_cast<std::istream&>(iss2);
+
+	std::ifstream ifs2 {"test2", std::ios_base::binary};
+	std::istream& is2 = static_cast<std::istream&>(ifs2);
+	std::ofstream ofs2 {"test3", std::ios_base::binary};
+	std::ostream& os2 = static_cast<std::ostream&>(ofs2);
 
 	grille::DecryptStream ds{key};
-	std::cout<<"decoded: ";
-	while(is2){
-		is2 >> ds;
-		std::cout << ds;
-	}
 
+	while(is2){
+		is2 >> std::noskipws >> ds;
+		os2 << std::noskipws << ds;
+	}
+	ifs2.close();
+	ofs2.close();
 	return 0;
 }
