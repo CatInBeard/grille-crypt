@@ -26,6 +26,7 @@
 #include "GrilleKey.h"
 #include "EncryptStream.h"
 #include "DecryptStream.h"
+#include "KeyGenerator.h"
 
 int main(){
 
@@ -34,11 +35,9 @@ int main(){
 	std::ofstream ofs {"test2"};
 	std::ostream& os = static_cast<std::ostream&>(ofs);
 
-	std::string keyString;
+	grille::KeyGenerator kg;
 
-	std::list<char> password{'a','b','c'};
-
-	grille::GrilleKey key{password};
+	grille::GrilleKey key = kg.getNewKey();
 	grille::EncryptStream es {key};
 	while(is.good()){
 		is >>std::noskipws >> es;

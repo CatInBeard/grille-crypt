@@ -33,6 +33,6 @@ else()
          message(STATUS "build not for unix")                                      
 endif()
 
-add_executable(${PROJECT_NAME} src/main.cpp src/GrilleKey.h src/GrilleKey.cpp src/AbstractCryptStream.h src/AbstractCryptStream.cpp src/EncryptStream.h src/EncryptStream.cpp src/AbstractRandomStream.h src/LinuxRandomStream.h src/AbstractSystemDependedFactory.h src/AbstractSystemDependedFactory.cpp src/DecryptStream.h src/DecryptStream.cpp ${SystemDepended})
+add_executable(${PROJECT_NAME} src/main.cpp src/GrilleKey.h src/GrilleKey.cpp src/AbstractCryptStream.h src/AbstractCryptStream.cpp src/EncryptStream.h src/EncryptStream.cpp src/AbstractRandomStream.h src/LinuxRandomStream.h src/AbstractSystemDependedFactory.h src/AbstractSystemDependedFactory.cpp src/DecryptStream.h src/DecryptStream.cpp src/KeyGenerator.h src/KeyGenerator.cpp ${SystemDepended})
 	
 target_link_libraries(${PROJECT_NAME})
