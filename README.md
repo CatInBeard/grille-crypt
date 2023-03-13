@@ -10,6 +10,7 @@ To build grille-crypt:
 ```
 git clone https://github.com/CatInBeard/grille-crypt.git
 cd grille-crypt  
+cmake CMakeLists.txt
 cmake --build .
 ```
 
