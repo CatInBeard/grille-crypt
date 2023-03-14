@@ -26,6 +26,7 @@
 namespace grille{
 
 GrilleKey::GrilleKey(const std::list<char>& password){
+	keyChars = password;
 	listSize = 0;
 	for(unsigned char c: password){
 		while(c>0){
@@ -48,5 +49,10 @@ key_iterator GrilleKey::begin() const{
 key_iterator GrilleKey::end() const{
 	return keyDataList.end();
 }
+
+std::list<char> GrilleKey::getKeyChars(){
+	return keyChars;
+}
+
 
 }

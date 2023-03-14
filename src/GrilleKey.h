@@ -27,10 +27,12 @@ class GrilleKey{
 		unsigned int size() const;
 		key_iterator begin() const;
 		key_iterator end() const;
+		std::list<char> getKeyChars();
 
 	private:
 		unsigned int listSize;
 		std::list<bool> keyDataList; 
+		std::list<char> keyChars;
 };
 
 }
