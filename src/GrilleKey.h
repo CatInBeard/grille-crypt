@@ -27,7 +27,7 @@ class GrilleKey{
 		unsigned int size() const;
 		key_iterator begin() const;
 		key_iterator end() const;
-		std::list<char> getKeyChars();
+		std::list<char> getKeyChars() const;
 
 	private:
 		unsigned int listSize;

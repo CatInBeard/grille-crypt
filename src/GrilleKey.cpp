@@ -50,7 +50,7 @@ key_iterator GrilleKey::end() const{
 	return keyDataList.end();
 }
 
-std::list<char> GrilleKey::getKeyChars(){
+std::list<char> GrilleKey::getKeyChars() const{
 	return keyChars;
 }
 
