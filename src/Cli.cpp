@@ -28,11 +28,14 @@ namespace grille{
 	namespace cli{
 
 	void hello(){
-		std::cout<< "Grille Crypt"<<std::endl;
+	std::string helloText{"Grille crypt provide you to encrypt and decrypt files with Grille algorithm\nCopyright (C) 2023  Grigoriy Efimov\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.\n"};
+	std::cout<<helloText<<std::endl;
 	}
 
 	void help(){
-		std::cout<< "Help"<<std::endl;		
+		std::cout<< "Help:"<<std::endl;
+		std::cout<< "You can use interactive mode: without arguments or with -e (--encrypt) or -d (--decrypt)" <<std::endl;
+		std::cout<< "For non-interactive usage type grille-crypt -e -i inputFile -o outputFile -p password "<<std::endl;
 	}
 
 	void done(){
@@ -47,7 +50,6 @@ namespace grille{
 
 		std::cout << "Enter input file name:"<<std::endl;
 		std::cin >> inputFile;
-
 
 		std::cout << "Enter output file name:"<<std::endl;
 		std::cin >> outputFile;
