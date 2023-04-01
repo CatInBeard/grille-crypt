@@ -74,6 +74,62 @@ namespace grille{
 		extractStrings(inputFile, OutputFile, passCode);
 	}
 
+	bool extractStringsFromArgs(char* argv[],std::string& inputFile, std::string& outputFile, std::string& passCode, Action& action){
+	
+		bool setInputFile = false;
+		bool setOutputFile = false;
+		bool setPassCode = false;
+		bool setAction = false;
+
+		for(int i = 0; i!=8; ++i){
+			std::string arg {argv[i]};
+			if(arg == "-e" || arg == "--encrypt"){
+				action = encrypt;
+				setAction = true;
+			}
+			else if(arg == "-d" || arg == "--decrypt"){
+				action = decrypt;
+				setAction =true;
+			}
+			else if(arg == "-i" || arg == "--input"){
+				if(i==7){
+					return false;
+				}
+				std::string nextArg {argv[i+1]};
+				if(nextArg[0] == '-'){
+					return false;
+				}
+				setInputFile = true;
+				inputFile = nextArg;
+			}
+			else if(arg == "-o" || arg == "--output"){
+				if(i==7){
+					return false;
+				}
+				std::string nextArg {argv[i+1]};
+				if(nextArg[0] == '-'){
+					return false;
+				}
+				setOutputFile = true;
+				outputFile = nextArg;
+			}
+			else if(arg == "-p" || arg == "--passcode"){
+				if(i==7){
+					return false;
+				}
+				std::string nextArg {argv[i+1]};
+				if(nextArg[0] == '-'){
+					return false;
+				}
+				setPassCode = true;
+				passCode = nextArg;
+			}
+
+		}
+
+		return setInputFile && setOutputFile && setPassCode && setAction;
+	}
+
 	}
 	
 }

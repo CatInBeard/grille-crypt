@@ -50,12 +50,12 @@ int main(int argc, char* argv[]){
 		else if(arg1 == "-e" || arg1 == "--encrypt"){
 			action = encrypt;
 			grille::cli::hello();
-			grille::cli::extractStrings(inputFile, outputFile, passCode, action);				
+			grille::cli::extractStrings(inputFile, outputFile, passCode);				
 		}
 		else if(arg1 == "-d" || arg1 == "--decrypt"){
 			action = decrypt;
 			grille::cli::hello();
-			grille::cli::extractStrings(inputFile, outputFile, passCode, action);	
+			grille::cli::extractStrings(inputFile, outputFile, passCode);	
 		}
 		else{
 			grille::cli::hello();
@@ -64,8 +64,12 @@ int main(int argc, char* argv[]){
 			return 1;
 		}
 	}
-	else if(argc == 6){
-		return 1;	
+	else if(argc == 8){
+		if(!grille::cli::extractStringsFromArgs(argv ,inputFile, outputFile, passCode, action)){		
+			grille::cli::incorrectInput();
+			return 1;
+		}
+
 	}
 	else{
 		grille::cli::hello();

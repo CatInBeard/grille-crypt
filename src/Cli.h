@@ -40,6 +40,8 @@ namespace grille{
 		void extractStrings(std::string& inputFile, std::string& OutputFile, std::string& passCode);
 
 		void extractStrings(std::string& inputFile, std::string& OutputFile, std::string& passCode, Action& action);
+
+		bool extractStringsFromArgs(char* argv[],std::string& inputFile, std::string& OutputFile, std::string& passCode, Action& action);
 	}
 }
 #endif
