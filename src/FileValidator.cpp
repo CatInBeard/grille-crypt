@@ -18,19 +18,40 @@
  *
  */
 
+#include <iostream>
 
-#include <string>
-#include <list>
+#include "FileValidator.h"
 #include "converter.h"
+#include "XorCrypt.h"
 
 namespace grille{
 
-	std::list<char> stringToList(std::string str){
-		std::list<char> lst;
-		for(char c: str)
-			lst.push_back(c);
-		return lst;
+	void FileValidator::setPasscode(const std::string& str){
+		passcodeLst = stringToList(str);
+	}
+	bool FileValidator::validateStream(std::istream& is) const{
+		char chars[6];
+		for(auto i=0;i!=5 ;i++){
+			is >> chars[i];
+		}
+		return std::string{chars} == "GRL1S";
+
+	}
+	GrilleKey FileValidator::extractKey(std::istream& is) const{
+		std::list<char> keyChars;
+		char size;
+		is >> size;
+		size = size ^ passcodeLst.front();
+		for(; size!=0; size--){
+			char buffer;
+			is >> buffer;
+			keyChars.push_back(buffer);
+		}
+		XorCrypt xcrypt{passcodeLst};
+		
+		std::list<char> decryptedLst {xcrypt.encrypt(keyChars)};
+		
+		return GrilleKey{decryptedLst};
 	}
 
 }
-

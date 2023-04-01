@@ -23,7 +23,7 @@
 #include <list>
 
 #ifndef CONVERTER_H
-#define CONVERTER_h
+#define CONVERTER_H
 
 namespace grille{
 

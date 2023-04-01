@@ -40,13 +40,13 @@ namespace grille{
 		
 		os<<"GRL1S";
 
-		char i =0;
+		char i = static_cast<char>(output.size());
+		
+		os<< static_cast<char>( i ^ static_cast<char>(ff.passcodeLst.front()));
 
 		for(char c: output){
-			i++;
 			os<<c;
 		}
-		os<<i;
 
 		return os;
 	}

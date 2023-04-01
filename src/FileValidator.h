@@ -19,18 +19,23 @@
  */
 
 
+#ifndef FILE_VALIDATOR_H
+#define FILE_VALIDATOR_H
+
 #include <string>
-#include <list>
-#include "converter.h"
+#include "GrilleKey.h"
 
 namespace grille{
 
-	std::list<char> stringToList(std::string str){
-		std::list<char> lst;
-		for(char c: str)
-			lst.push_back(c);
-		return lst;
-	}
+class FileValidator{
+	public:
+		void setPasscode(const std::string&);
+		bool validateStream(std::istream&) const;
+		GrilleKey extractKey(std::istream&) const;
+	private:
+		std::list<char> passcodeLst;
+};
 
 }
 
+#endif
