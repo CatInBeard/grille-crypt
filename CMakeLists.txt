@@ -35,6 +35,6 @@ else()
          message(STATUS "Build not for unix")                                      
 endif()
 
-add_executable(${PROJECT_NAME} src/main.cpp src/GrilleKey.h src/GrilleKey.cpp src/AbstractCryptStream.h src/AbstractCryptStream.cpp src/EncryptStream.h src/EncryptStream.cpp src/AbstractRandomStream.h src/LinuxRandomStream.h src/AbstractSystemDependedFactory.h src/AbstractSystemDependedFactory.cpp src/DecryptStream.h src/DecryptStream.cpp src/KeyGenerator.h src/KeyGenerator.cpp src/XorCrypt.h src/XorCrypt.cpp src/converter.h src/converter.cpp src/FileFormatter.h src/FileFormatter.cpp src/FileValidator.h src/FileValidator.cpp ${SystemDepended})
+add_executable(${PROJECT_NAME} src/main.cpp src/GrilleKey.h src/GrilleKey.cpp src/AbstractCryptStream.h src/AbstractCryptStream.cpp src/EncryptStream.h src/EncryptStream.cpp src/AbstractRandomStream.h src/LinuxRandomStream.h src/AbstractSystemDependedFactory.h src/AbstractSystemDependedFactory.cpp src/DecryptStream.h src/DecryptStream.cpp src/KeyGenerator.h src/KeyGenerator.cpp src/XorCrypt.h src/XorCrypt.cpp src/converter.h src/converter.cpp src/FileFormatter.h src/FileFormatter.cpp src/FileValidator.h src/FileValidator.cpp src/GrilleCrypt.h src/GrilleCrypt.cpp ${SystemDepended})
 	
 target_link_libraries(${PROJECT_NAME})
