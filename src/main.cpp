@@ -19,47 +19,72 @@
  */
 
 
+#include "GrilleCrypt.h"
+#include <string>
 #include <iostream>
-#include <sstream>
-#include <fstream>
 
-#include "GrilleKey.h"
-#include "EncryptStream.h"
-#include "DecryptStream.h"
-#include "KeyGenerator.h"
 
-int main(){
+#include "Cli.h"
 
-	std::ifstream ifs {"test", std::ios_base::binary};
-	std::istream& is = static_cast<std::istream&>(ifs);
-	std::ofstream ofs {"test2"};
-	std::ostream& os = static_cast<std::ostream&>(ofs);
+using grille::cli::encrypt;
+using grille::cli::decrypt;
 
-	grille::KeyGenerator kg;
+int main(int argc, char* argv[]){
 
-	grille::GrilleKey key = kg.getNewKey();
-	grille::EncryptStream es {key};
-	while(is.good()){
-		is >>std::noskipws >> es;
-		os << std::noskipws<< es;
-	}	
-	
-	ifs.close();
-	ofs.close();
-	
 
-	std::ifstream ifs2 {"test2", std::ios_base::binary};
-	std::istream& is2 = static_cast<std::istream&>(ifs2);
-	std::ofstream ofs2 {"test3", std::ios_base::binary};
-	std::ostream& os2 = static_cast<std::ostream&>(ofs2);
+	grille::cli::Action action {encrypt};
+	std::string inputFile;
+	std::string outputFile;
+	std::string passCode;
 
-	grille::DecryptStream ds{key};
-
-	while(is2){
-		is2 >> std::noskipws >> ds;
-		os2 << std::noskipws << ds;
+	if(argc == 1){	
+		grille::cli::hello();
+		grille::cli::extractStrings(inputFile, outputFile, passCode, action);		
 	}
-	ifs2.close();
-	ofs2.close();
+	else if(argc == 2){
+		std::string arg1 {argv[1]};
+		if(arg1 == "-h" || arg1 == "--help"){
+			grille::cli::hello();
+			grille::cli::help();
+		}
+		else if(arg1 == "-e" || arg1 == "--encrypt"){
+			action = encrypt;
+			grille::cli::hello();
+			grille::cli::extractStrings(inputFile, outputFile, passCode, action);				
+		}
+		else if(arg1 == "-d" || arg1 == "--decrypt"){
+			action = decrypt;
+			grille::cli::hello();
+			grille::cli::extractStrings(inputFile, outputFile, passCode, action);	
+		}
+		else{
+			grille::cli::hello();
+			grille::cli::incorrectInput();
+
+			return 1;
+		}
+	}
+	else if(argc == 6){
+		return 1;	
+	}
+	else{
+		grille::cli::hello();
+		grille::cli::incorrectInput();
+
+		return 1;
+	}
+
+
+	grille::GrilleCrypt gc{};
+	
+	if(action == encrypt){
+		gc.Encrypt(inputFile, outputFile, passCode);
+	}
+	else{
+		gc.Decrypt(inputFile, outputFile, passCode);
+	}
+
+	grille::cli::done();
+
 	return 0;
 }
