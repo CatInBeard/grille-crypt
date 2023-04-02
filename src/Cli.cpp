@@ -28,7 +28,7 @@ namespace grille{
 	namespace cli{
 
 	void hello(){
-	std::string helloText{"Grille crypt provide you to encrypt and decrypt files with Grille algorithm\nCopyright (C) 2023  Grigoriy Efimov\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.\n"};
+	std::string helloText{"Grille crypt provide you to encrypt and decrypt files with Grille algorithm\nCopyright (C) 2023  Grigoriy Efimov\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.\n"};
 	std::cout<<helloText<<std::endl;
 	}
 
@@ -36,6 +36,12 @@ namespace grille{
 		std::cout<< "Help:"<<std::endl;
 		std::cout<< "You can use interactive mode: without arguments or with -e (--encrypt) or -d (--decrypt)" <<std::endl;
 		std::cout<< "For non-interactive usage type grille-crypt -e -i inputFile -o outputFile -p password "<<std::endl;
+		std::cout<< "-e, --encrypt\tEncrypt file"<<std::endl;
+		std::cout<< "-d, --decrypt\tDecrypt file"<<std::endl;
+		std::cout<< "-i, --input\tInput file name"<<std::endl;
+		std::cout<< "-o, --output\tOutput file name"<<std::endl;
+		std::cout<< "-p, --passcode\tPasscode to decrypt or encrypt file"<<std::endl;
+		std::cout<< "-h, --help\tShow help"<<std::endl;
 	}
 
 	void done(){
@@ -76,14 +82,18 @@ namespace grille{
 		extractStrings(inputFile, OutputFile, passCode);
 	}
 
-	bool extractStringsFromArgs(char* argv[],std::string& inputFile, std::string& outputFile, std::string& passCode, Action& action){
+	bool extractStringsFromArgs(int argc, char* argv[],std::string& inputFile, std::string& outputFile, std::string& passCode, Action& action){
 	
+		if(argc<8){
+			return false;
+		}
+
 		bool setInputFile = false;
 		bool setOutputFile = false;
 		bool setPassCode = false;
 		bool setAction = false;
 
-		for(int i = 0; i!=8; ++i){
+		for(int i = 0; i!=argc; ++i){
 			std::string arg {argv[i]};
 			if(arg == "-e" || arg == "--encrypt"){
 				action = encrypt;
@@ -94,7 +104,7 @@ namespace grille{
 				setAction =true;
 			}
 			else if(arg == "-i" || arg == "--input"){
-				if(i==7){
+				if(i==argc-1){
 					return false;
 				}
 				std::string nextArg {argv[i+1]};
@@ -105,7 +115,7 @@ namespace grille{
 				inputFile = nextArg;
 			}
 			else if(arg == "-o" || arg == "--output"){
-				if(i==7){
+				if(i==argc-1){
 					return false;
 				}
 				std::string nextArg {argv[i+1]};
@@ -116,7 +126,7 @@ namespace grille{
 				outputFile = nextArg;
 			}
 			else if(arg == "-p" || arg == "--passcode"){
-				if(i==7){
+				if(i==argc-1){
 					return false;
 				}
 				std::string nextArg {argv[i+1]};

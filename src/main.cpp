@@ -46,6 +46,7 @@ int main(int argc, char* argv[]){
 		if(arg1 == "-h" || arg1 == "--help"){
 			grille::cli::hello();
 			grille::cli::help();
+			return 0;
 		}
 		else if(arg1 == "-e" || arg1 == "--encrypt"){
 			action = encrypt;
@@ -58,25 +59,17 @@ int main(int argc, char* argv[]){
 			grille::cli::extractStrings(inputFile, outputFile, passCode);	
 		}
 		else{
-			grille::cli::hello();
 			grille::cli::incorrectInput();
 
 			return 1;
 		}
-	}
-	else if(argc == 8){
-		if(!grille::cli::extractStringsFromArgs(argv ,inputFile, outputFile, passCode, action)){		
-			grille::cli::incorrectInput();
-			return 1;
-		}
-
 	}
 	else{
-		grille::cli::hello();
-		grille::cli::incorrectInput();
-
-		return 1;
-	}
+		if(!grille::cli::extractStringsFromArgs(argc ,argv ,inputFile, outputFile, passCode, action)){		
+			grille::cli::incorrectInput();
+			return 1;
+		}
+	}	
 
 
 	grille::GrilleCrypt gc{};
