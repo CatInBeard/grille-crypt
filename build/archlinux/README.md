@@ -1,5 +1,6 @@
 # Build for archlinux
 
+## Manual build
 You need to install make,cmake, gcc,git, basedevel. To install:
 
 ```
@@ -16,4 +17,10 @@ cd grille-crypt/build/archlinux
 To install package:  
 ```
 sudo pacman -U grille-crypt-0.1.0-1-x86_64.pkg.tar.zst
+```
+## Build with docker:
+```
+git clone https://github.com/CatInBeard/grille-crypt.git  
+cd grille-crypt/build/archlinux/  
+/CI/ci_build.sh  
 ```
