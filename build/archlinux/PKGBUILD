@@ -1,0 +1,13 @@
+pkgname="grille-crypt"
+pkgver="0.1.0"
+pkgrel="1"
+pkgdesc="Grille-crypt provides you to encrypt and decrypt files with your key."
+arch=($CARCH)
+license=("GPL3")
+source=("../bin/grille-crypt")
+sha512sums=("SKIP")
+package() {
+  mkdir -p "${pkgdir}/usr/bin"
+  cp "${srcdir}/grille-crypt" "${pkgdir}/usr/bin/grille-crypt"
+  chmod +x "${pkgdir}/usr/bin/grille-crypt"
+}
