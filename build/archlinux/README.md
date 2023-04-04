@@ -1,5 +1,7 @@
 # Build for archlinux
 
+[![archlinux package builder](https://github.com/CatInBeard/grille-crypt/actions/workflows/arch_build.yaml/badge.svg)](https://github.com/CatInBeard/grille-crypt/actions/workflows/arch_build.yaml)
+
 ## Manual build
 You need to install make,cmake, gcc,git, basedevel. To install:
 

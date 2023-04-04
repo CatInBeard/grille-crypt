@@ -1,5 +1,9 @@
 # grille-crypt
 
+[![cppcheck static analysis](https://github.com/CatInBeard/grille-crypt/actions/workflows/cppcheck.yaml/badge.svg)](https://github.com/CatInBeard/grille-crypt/actions/workflows/cppcheck.yaml)
+
+[![archlinux package builder](https://github.com/CatInBeard/grille-crypt/actions/workflows/arch_build.yaml/badge.svg)](https://github.com/CatInBeard/grille-crypt/actions/workflows/arch_build.yaml)
+
 ## About
 Grille-crypt is a free grille algorithm C++ implementation.
 For more information about grille: https://en.m.wikipedia.org/wiki/Grille_(cryptography)  
