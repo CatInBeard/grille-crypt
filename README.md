@@ -1,7 +1,6 @@
 # grille-crypt
 
 [![cppcheck static analysis](https://github.com/CatInBeard/grille-crypt/actions/workflows/cppcheck.yaml/badge.svg)](https://github.com/CatInBeard/grille-crypt/actions/workflows/cppcheck.yaml)
-
 [![archlinux package builder](https://github.com/CatInBeard/grille-crypt/actions/workflows/arch_build.yaml/badge.svg)](https://github.com/CatInBeard/grille-crypt/actions/workflows/arch_build.yaml)
 
 ## About
