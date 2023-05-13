@@ -8,6 +8,8 @@ Grille-crypt is a free grille algorithm C++ implementation.
 For more information about grille: https://en.m.wikipedia.org/wiki/Grille_(cryptography)  
 Grille-crypt provides you to encrypt and decrypt files with your key. Its disadvantage is that the encrypted file is much larger than the original one.  But due to the presence of random data in the encrypted file, bruteforce becomes much more complicated.
 
+[![asciicast](https://asciinema.org/a/FnpoCVqyopwB5zg4q6ePMwj6N.svg)](https://asciinema.org/a/FnpoCVqyopwB5zg4q6ePMwj6N)
+
 ## Build
 To build grille-crypt:  
 ```
